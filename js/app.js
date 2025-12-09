@@ -1,65 +1,49 @@
-// Re-trigger fade-in animations on scroll
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
-        else entry.target.classList.remove("visible");
-    });
-});
-document.querySelectorAll(".fade-in-up").forEach(el => observer.observe(el));
 
 document.addEventListener("DOMContentLoaded", () => {
-    const path = document.getElementById("forecastPath");
+
+    const svg = document.getElementById("priceSVG");
+    const line = document.getElementById("priceLine");
     const dot  = document.getElementById("priceDot");
 
-    if (!path || !dot) return;
+    const W = 500;
+    const H = 200;
 
-    const total = path.getTotalLength();
-    path.style.strokeDasharray  = total;
-    path.style.strokeDashoffset = total;
-
-    const duration = 9000;
-    let start = null;
-
-    function generatePattern() {
+    function generatePricePath() {
         let points = [];
-        let last = 0;
-        for (let i = 0; i < 12; i++) {
-            let swing = (Math.random() * 0.6) - 0.3; 
-            let next = last + swing;
-            next = Math.max(0, Math.min(1, next));
-            points.push(next);
-            last = next;
+        let xStep = W / 40;
+        let price = H/2;
+
+        for (let i = 0; i < 40; i++) {
+            let swing = (Math.random() - 0.5) * 80; // big volatility
+            price += swing;
+            price = Math.max(10, Math.min(H-10, price));
+            points.push([i * xStep, price]);
         }
         return points;
     }
 
-    let pattern = generatePattern();
+    function animatePath() {
+        const path = generatePricePath();
+        let pts = path.map(p => p.join(",")).join(" ");
+        line.setAttribute("points", pts);
 
-    function randomPrice(t) {
-        let idx = t * (pattern.length - 1);
-        let low = Math.floor(idx);
-        let high = Math.ceil(idx);
-        let frac = idx - low;
-        return pattern[low] * (1 - frac) + pattern[high] * frac;
+        let t = 0;
+        const speed = 0.002; // slower movement
+        function frame() {
+            t += speed;
+            if (t >= 1) {
+                animatePath();
+                return;
+            }
+            let idx = Math.floor(t * (path.length-1));
+            let nx = path[idx][0];
+            let ny = path[idx][1];
+            dot.setAttribute("cx", nx);
+            dot.setAttribute("cy", ny);
+            requestAnimationFrame(frame);
+        }
+        frame();
     }
 
-    function frame(ts){
-        if (!start) start = ts;
-        const elapsed = (ts - start) % duration;
-        const t = elapsed / duration;
-
-        if (elapsed < 16) pattern = generatePattern();
-
-        path.style.strokeDashoffset = total * (1 - t);
-
-        const p = randomPrice(t);
-        const point = path.getPointAtLength(total * p);
-
-        dot.setAttribute("cx", point.x);
-        dot.setAttribute("cy", point.y);
-
-        requestAnimationFrame(frame);
-    }
-
-    requestAnimationFrame(frame);
+    animatePath();
 });
