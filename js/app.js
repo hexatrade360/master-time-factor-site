@@ -1,2 +1,13 @@
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add("visible");});});
-document.querySelectorAll(".fade-in-up").forEach(el=>obs.observe(el));
+// Scroll animations re-trigger every time an element enters/exits view
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+        } else {
+            entry.target.classList.remove("visible");
+        }
+    });
+});
+
+document.querySelectorAll(".fade-in-up").forEach(el => observer.observe(el));
