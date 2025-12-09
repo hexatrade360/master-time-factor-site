@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dot  = document.getElementById("priceDot");
 
     const W = 500;
-    const H = 200;
+    const H = 180;
 
     function generatePricePath() {
         let points = [];
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let price = H/2;
 
         for (let i = 0; i < 40; i++) {
-            let swing = (Math.random() - 0.5) * 80;
+            let swing = (Math.random() - 0.5) * 70;
             price += swing;
             price = Math.max(10, Math.min(H-10, price));
             points.push([i * xStep, price]);
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         line.setAttribute("points", path.map(p => p.join(",")).join(" "));
 
         let t = 0;
-        const speed = 0.002;
+        const speed = 0.0022;
         function frame() {
             t += speed;
             if (t >= 1) {
@@ -39,5 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         frame();
     }
+
     animatePath();
 });
