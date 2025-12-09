@@ -1,4 +1,7 @@
 // dynamic jagged chart-like banner animation
+
+
+// dynamic jagged chart-like banner animation
 document.addEventListener("DOMContentLoaded", () => {
     const svg = document.getElementById("priceSVG");
     const line = document.getElementById("priceLine");
@@ -27,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         line.setAttribute("points", pts);
 
         let t = 0;
-        const speed = 0.0018;
+        const speed = 0.0022;
         function frame() {
             t += speed;
             if (t >= 1) {

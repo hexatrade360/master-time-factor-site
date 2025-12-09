@@ -68,3 +68,8 @@ footer{text-align:center;padding:40px;opacity:.5;}
     width: 100%;
     height: 100%;
 }
+
+
+/* Fixed forecast banner */
+.forecast-banner {width:100%;max-width:900px;height:180px;margin:40px auto;overflow:hidden;position:relative;}
+.forecast-banner svg{width:100%;height:100%;}
