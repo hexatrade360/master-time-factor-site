@@ -1,5 +1,3 @@
-// Scroll animations re-trigger every time an element enters/exits view
-
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -9,5 +7,4 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 });
-
 document.querySelectorAll(".fade-in-up").forEach(el => observer.observe(el));
