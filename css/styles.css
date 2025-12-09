@@ -1,75 +1,78 @@
-body{margin:0;background:#0c0c0e;font-family:Inter,sans-serif;color:white;overflow-x:hidden;}
-section{padding:120px 8%;}
-.logo-container{position:fixed;top:0;left:0;opacity:0.07;mix-blend-mode:screen;pointer-events:none;transform:translate(-20%,-20%);z-index:-1;}
-.site-logo{height:300px;opacity:0.25;filter:drop-shadow(0 0 40px rgba(255,255,255,0.3)) blur(4px);}
-.sphere{position:fixed;border-radius:50%;background:radial-gradient(circle at 30% 30%,#5e5bff,#1e1b4b);filter:blur(40px);opacity:.35;animation:float 18s infinite ease-in-out alternate;z-index:-5;}
-.sphere1{width:350px;height:350px;top:10%;left:-10%;}
-.sphere2{width:450px;height:450px;bottom:5%;right:-12%;animation-duration:22s;}
-.sphere3{width:300px;height:300px;top:40%;right:10%;animation-duration:26s;}
-@keyframes float{0%{transform:translate(0,0);}100%{transform:translate(25px,-40px);}}
 
-/* HERO */
-.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;}
-.hero-pretitle{font-size:1rem;letter-spacing:3px;opacity:.75;margin-bottom:12px;text-transform:uppercase;position:relative;}
-.underline-glow{position:absolute;left:0;bottom:-6px;height:2px;width:0;background:linear-gradient(90deg,#7a5cff,#c084fc);box-shadow:0 0 12px #8b5cf6;animation:underlineExpand 2s forwards;}
-@keyframes underlineExpand{0%{width:0;}100%{width:100%;}}
+body {
+    margin:0; padding:0;
+    background:#000;
+    color:#fff;
+    font-family:Arial, sans-serif;
+    text-align:center;
+}
 
-/* Forecast banner */
+.hero {
+    padding:120px 0 60px;
+    position:relative;
+}
 
-.forecast-banner svg{width:100%;height:80px;}
-.forecast-line{fill:none;stroke:rgba(140,120,255,0.55);stroke-width:3;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(160,130,255,0.4));}
-.price-dot{fill:#ffffff;stroke:#9d7bff;stroke-width:3;filter:drop-shadow(0 0 8px #b798ff);}
+.hero h1 {
+    font-size:42px;
+    font-weight:700;
+    z-index:2;
+    position:relative;
+}
 
-/* Time ring */
-.time-ring-container{position:relative;width:360px;height:360px;margin:0 auto 25px auto;}
-.time-ring{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:50%;
-background:radial-gradient(circle, rgba(120,95,255,0.2), rgba(0,0,0,0) 70%);
-box-shadow:0 0 40px rgba(120,95,255,0.3), inset 0 0 35px rgba(120,95,255,0.2);
-animation:rotateRing 40s linear infinite;}
-@keyframes rotateRing{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+.hero span { color:#3cf; }
 
-/* Pulses */
-.pulse-circle{position:absolute;top:50%;left:50%;width:22px;height:22px;border-radius:50%;
-background:rgba(168,140,255,0.9);box-shadow:0 0 25px rgba(168,140,255,0.9);
-transform:translate(-50%,-50%) scale(0);animation:pulseCore 4s ease-in-out infinite;}
-.pulse-circle.delay1{animation-delay:1.2s;}
-.pulse-circle.delay2{animation-delay:2.4s;}
-@keyframes pulseCore{0%{transform:translate(-50%,-50%) scale(.2);opacity:.7;}70%{transform:translate(-50%,-50%) scale(2.6);opacity:0;}100%{opacity:0;}}
+.holo {
+    width:300px; height:300px;
+    border-radius:50%;
+    border:2px solid rgba(0,150,255,0.4);
+    box-shadow:0 0 40px rgba(0,150,255,0.5);
+    position:absolute;
+    top:40px; left:50%; transform:translateX(-50%);
+    animation:spin 14s linear infinite;
+    opacity:0.4;
+}
 
-/* Saturn dual rings */
-.saturn-ring{position:absolute;top:50%;left:50%;width:520px;height:200px;border-radius:50%;
-transform:translate(-50%,-50%) rotateX(62deg);pointer-events:none;border:2px solid rgba(150,120,255,0.22);
-animation:spinA 28s linear infinite;}
-.saturn2{width:540px;height:210px;border:2px solid rgba(180,150,255,0.30);filter:blur(8px);animation:spinB 36s linear infinite reverse;}
-@keyframes spinA{0%{transform:translate(-50%,-50%) rotateX(62deg) rotate(0);}100%{transform:translate(-50%,-50%) rotateX(62deg) rotate(360deg);}}
-@keyframes spinB{0%{transform:translate(-50%,-50%) rotateX(62deg) rotate(0);}100%{transform:translate(-50%,-50%) rotateX(62deg) rotate(360deg);}}
-
-/* Sections below */
-.why-grid{display:flex;gap:40px;justify-content:center;}
-.why-card{width:260px;padding:24px;background:rgba(255,255,255,0.06);border-radius:12px;}
-.example-row{display:flex;gap:40px;justify-content:center;}
-.example-box{width:360px;height:220px;background:rgba(255,255,255,0.06);border-radius:12px;}
-.offer-card{max-width:420px;margin:auto;padding:40px;background:rgba(255,255,255,0.08);border-radius:14px;text-align:center;}
-footer{text-align:center;padding:40px;opacity:.5;}
-
-.fade-in-up{opacity:0;transform:translateY(40px);transition:1s;}
-.fade-in-up.visible{opacity:1;transform:translateY(0);}
-
+@keyframes spin {
+    from{transform:translateX(-50%) rotate(0deg);}
+    to{transform:translateX(-50%) rotate(360deg);}
+}
 
 .forecast-banner {
-    width: 100%;
-    max-width: 900px;
-    height: 180px;
-    margin: 40px auto;
-    overflow: hidden;
-    position: relative;
-}
-.forecast-banner svg {
-    width: 100%;
-    height: 100%;
+    width:100%;
+    max-width:900px;
+    height:180px;
+    margin:0 auto 60px;
+    overflow:hidden;
 }
 
+.forecast-line {
+    fill:none;
+    stroke:#3cf;
+    stroke-width:3;
+}
 
-/* Fixed forecast banner */
-.forecast-banner {width:100%;max-width:900px;height:180px;margin:40px auto;overflow:hidden;position:relative;}
-.forecast-banner svg{width:100%;height:100%;}
+.price-dot {
+    fill:#fff;
+}
+
+.features {
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:40px 0;
+}
+
+.card {
+    padding:20px 40px;
+    background:#111;
+    border:1px solid #333;
+    border-radius:8px;
+    font-size:18px;
+}
+
+footer {
+    margin-top:40px;
+    padding:20px;
+    font-size:14px;
+    opacity:0.6;
+}
