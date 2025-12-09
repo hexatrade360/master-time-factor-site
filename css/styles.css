@@ -8,13 +8,12 @@ body {
     overflow-x:hidden;
 }
 
-/* TOP BANNER */
 .top-banner {
     width:100%;
     height:180px;
-    background:radial-gradient(circle, #013 0%, #000 80%);
     overflow:hidden;
-    border-bottom:1px solid #022;
+    background:radial-gradient(circle at center, #022 0%, #000 80%);
+    border-bottom:1px solid #033;
 }
 
 .forecast-line {
@@ -24,7 +23,6 @@ body {
 }
 .price-dot { fill:#fff; }
 
-/* HERO */
 .hero {
     padding:120px 0 60px;
     position:relative;
@@ -33,23 +31,43 @@ body {
 .hero h1 {
     font-size:42px;
     font-weight:700;
-    z-index:2;
+    z-index:5;
     position:relative;
 }
-.hero span { color:#3cf; }
+.hero span { color:#37c9ff; }
 
-/* HOLOGRAM */
-.holo {
-    width:380px; height:380px;
+.holo-outer {
+    width:420px; height:420px;
     border-radius:50%;
     position:absolute;
-    top:20px; left:50%; transform:translateX(-50%);
-    background:
-        radial-gradient(circle, rgba(0,120,255,0.1), rgba(0,0,0,0) 70%),
-        radial-gradient(circle, rgba(0,120,255,0.25), rgba(0,0,0,0) 90%);
-    box-shadow:0 0 70px rgba(0,150,255,0.25);
-    animation:spin 20s linear infinite;
+    top:30px; left:50%; transform:translateX(-50%);
+    background:radial-gradient(circle, rgba(0,150,255,0.15), rgba(0,0,0,0) 70%);
+    filter:blur(10px);
     opacity:0.45;
+    z-index:1;
+}
+
+.holo-ring {
+    width:380px; height:380px;
+    border-radius:50%;
+    border:3px solid rgba(0,150,255,0.45);
+    position:absolute;
+    top:50px; left:50%; transform:translateX(-50%);
+    box-shadow:0 0 50px rgba(0,150,255,0.6);
+    animation:spin 16s linear infinite;
+    opacity:0.7;
+    z-index:2;
+}
+
+.holo-core {
+    width:160px; height:160px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(0,200,255,0.8), rgba(0,0,0,0) 70%);
+    position:absolute;
+    top:140px; left:50%; transform:translateX(-50%);
+    opacity:0.4;
+    animation:pulse 3.2s ease-in-out infinite;
+    z-index:3;
 }
 
 @keyframes spin {
@@ -57,7 +75,11 @@ body {
     to{transform:translateX(-50%) rotate(360deg);}
 }
 
-/* FEATURES */
+@keyframes pulse {
+    0%,100%{transform:translateX(-50%) scale(1);}
+    50%{transform:translateX(-50%) scale(1.3);}
+}
+
 .features {
     display:flex;
     justify-content:center;
@@ -67,14 +89,13 @@ body {
 
 .card {
     padding:20px 40px;
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.1);
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.12);
     border-radius:8px;
     font-size:18px;
-    backdrop-filter:blur(6px);
+    backdrop-filter:blur(8px);
 }
 
-/* FOOTER */
 footer {
     margin-top:40px;
     padding:20px;
