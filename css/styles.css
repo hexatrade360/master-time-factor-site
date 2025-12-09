@@ -56,7 +56,6 @@ footer{text-align:center;padding:40px;opacity:.5;}
 .fade-in-up.visible{opacity:1;transform:translateY(0);}
 
 
-/* FIXED BANNER SIZE SO IT DOESN'T TAKE OVER THE WHOLE WEBSITE */
 .forecast-banner {
     width: 100%;
     max-width: 900px;
@@ -65,8 +64,6 @@ footer{text-align:center;padding:40px;opacity:.5;}
     overflow: hidden;
     position: relative;
 }
-
-/* Ensure SVG fits properly inside container */
 .forecast-banner svg {
     width: 100%;
     height: 100%;
