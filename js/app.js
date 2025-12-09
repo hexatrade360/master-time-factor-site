@@ -1,2 +1,2 @@
-const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");}});});
-document.querySelectorAll(".fade-in-up").forEach(el=>observer.observe(el));
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add("visible");});});
+document.querySelectorAll(".fade-in-up").forEach(el=>obs.observe(el));
