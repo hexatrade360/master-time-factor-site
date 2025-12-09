@@ -19,7 +19,7 @@ body {
 .forecast-line {
     fill:none;
     stroke:#3cf;
-    stroke-width:3;
+    stroke-width:2;
 }
 .price-dot { fill:#fff; }
 

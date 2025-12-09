@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dot  = document.getElementById("priceDot");
 
     const W = 500;
-    const H = 180;
+    const H = 260;
 
     function generatePricePath() {
         let points = [];
@@ -12,9 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
         let price = H/2;
 
         for (let i = 0; i < 50; i++) {
-            let swing = (Math.random() - 0.5) * 90;
+            let swing = (Math.random() - 0.5) * 28;   // REDUCED amplitude
             price += swing;
-            price = Math.max(10, Math.min(H-10, price));
+
+            price = Math.max(40, Math.min(H - 40, price));
+
             points.push([i * xStep, price]);
         }
         return points;
