@@ -19,47 +19,13 @@
 
 <div class="forecast-banner fade-in-up">
     <svg viewBox="0 0 500 80" preserveAspectRatio="none">
-
+        <!-- Forecast path (static line) -->
         <path id="forecastPath"
               class="forecast-line"
               d="M0,60 C120,10 260,110 400,40 460,20 500,60 500,60" />
 
-        <circle class="price-dot" r="6" cx="0" cy="0">
-            <animateMotion 
-                id="priceRun"
-                dur="2s"
-                begin="forecastLineDraw.end"
-                repeatCount="indefinite"
-                keyPoints="0;0.12;0.18;0.45;0.47;0.80;1"
-                keyTimes="0;0.15;0.25;0.45;0.55;0.75;1"
-                calcMode="paced"
-                path="M0,60 C120,10 260,110 400,40 460,20 500,60"
-            />
-        </circle>
-
-        <animate 
-            id="forecastFade"
-            xlink:href="#forecastPath"
-            attributeName="opacity"
-            from="1" 
-            to="0"
-            dur="0.5s"
-            begin="forecastLineDraw.end + 0.2s"
-            fill="freeze"
-        />
-
-        <animate 
-            id="forecastLineDraw"
-            xlink:href="#forecastPath"
-            attributeName="stroke-dashoffset"
-            from="800" 
-            to="0"
-            dur="1.8s"
-            begin="forecastFade.end + 0.1s"
-            fill="freeze"
-            repeatCount="indefinite"
-        />
-
+        <!-- Price dot that will be moved along the path with JS -->
+        <circle id="priceDot" class="price-dot" r="6" cx="0" cy="0" />
     </svg>
 </div>
 
