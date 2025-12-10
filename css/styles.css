@@ -8,7 +8,6 @@ body {
     overflow-x:hidden;
 }
 
-/* Banner crops 260px SVG to 180px exactly */
 .top-banner {
     width:100%;
     height:180px;
@@ -38,7 +37,6 @@ body {
 }
 .hero span { color:#37c9ff; }
 
-/* Hologram visuals */
 .holo-outer {
     width:420px; height:420px;
     border-radius:50%;

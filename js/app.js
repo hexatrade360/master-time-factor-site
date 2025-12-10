@@ -4,10 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const dot  = document.getElementById("priceDot");
 
     const W = 500;
-    const H = 260;  // SVG internal height
+    const H = 260;
 
-    // Baseline with slight lift (Option 2)
-    const BASELINE = 200; // near bottom, but lifted
+    // Clean aesthetic slightly smaller waveform
+    const BASELINE = 185;  
+    const AMP = 22;  
 
     function generatePricePath() {
         let points = [];
@@ -15,11 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
         let price = BASELINE;
 
         for (let i = 0; i < 50; i++) {
-            let swing = (Math.random() - 0.5) * 28; // reduced amplitude
+            let swing = (Math.random() - 0.5) * AMP;
             price += swing;
 
-            // Keep within safe render area before cropping
-            price = Math.max(60, Math.min(H - 20, price));
+            // Keep waveform small and clean
+            price = Math.max(130, Math.min(230, price));
 
             points.push([i * xStep, price]);
         }
@@ -35,12 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function frame() {
             t += speed;
-            if (t >= 1) {
-                animatePath();
-                return;
-            }
+            if (t >= 1) return animatePath();
 
             let idx = Math.floor(t * (path.length - 1));
+
             dot.setAttribute("cx", path[idx][0]);
             dot.setAttribute("cy", path[idx][1]);
 
